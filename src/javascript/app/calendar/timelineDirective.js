@@ -1,4 +1,6 @@
-app.directive('timeline', function(){
+angular.module('calendar').directive('timeline', function(){
+  'use strict';
+
   return {
     restrict: 'E',
     templateUrl: 'calendar/views/timeline.html',

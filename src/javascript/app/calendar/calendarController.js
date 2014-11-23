@@ -1,12 +1,12 @@
-app.controller('CalendarController', function($scope, CalendarService, $window) {
+angular.module('calendar').controller('CalendarController', function($scope, CalendarService, $window) {
     'use strict';
 
-      $scope.events =  CalendarService.normalize(mocks.events);
+      $scope.events =  CalendarService.setEvents(mocks.events);
 
       var externalFuncationName = 'lay' + 'OutDay';
       $window[externalFuncationName] = function(events) {
         return (!angular.isArray(events)) ? events
-          : ($scope.events = CalendarService(events)) && $scope.$digest();
+          : ($scope.events = CalendarService.setEvents(events)) && $scope.$digest();
       };
 
 

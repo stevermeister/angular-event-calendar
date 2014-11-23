@@ -1,11 +1,15 @@
-app.filter('midday', function () {
+angular.module('calendar').filter('midday', function () {
+  'use strict';
+
   function middayFilter(hours){
-    return postfix = (hours / 12)|0 ? 'PM' : 'AM';
+    return Math.floor(hours / 12) ? 'PM' : 'AM';
   }
   return middayFilter;
 });
 
-app.filter('h12', function () {
+angular.module('calendar').filter('h12', function () {
+  'use strict';
+
   function h12Filter(hours){
     return ((hours % 12) || 12);
   }

@@ -1,4 +1,6 @@
-app.directive('eventBox', function(){
+angular.module('calendar').directive('eventBox', function(){
+  'use strict';
+
   return {
     restrict: 'E',
     templateUrl: 'calendar/views/eventBox.html',
@@ -7,9 +9,9 @@ app.directive('eventBox', function(){
 
       element.css({
         top: scope.event.start,
-        width: element.parent().width(),
+        width: (element.parent().width() - 10)/ (scope.event.siblings.length + 1),
         height: (scope.event.end - scope.event.start) || element.height(),
-        rigth: scope.event.right? 0: false
+        left: scope.event.column * element.parent().width()/ (scope.event.siblings.length + 1)
       });
     }
   };
