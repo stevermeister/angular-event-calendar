@@ -45,8 +45,6 @@ header {
     animation: showEvent 0.3s;
 }
 
-
-
 .event p {
     margin: 10px 10px 0 10px;
 }
@@ -68,6 +66,61 @@ header {
 }
 
 
+
+@-webkit-keyframes showEvent {
+    0% {
+        transform: scale(0.7);
+        -webkit-transform: scale(0.7);
+    }
+    45% {
+        transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+    }
+    80% {
+        transform: scale(0.95);
+        -webkit-tranform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+}
+@-moz-keyframes showEvent {
+    0% {
+        transform: scale(0.7);
+        -webkit-transform: scale(0.7);
+    }
+    45% {
+        transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+    }
+    80% {
+        transform: scale(0.95);
+        -webkit-tranform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+}
+@keyframes showSEvent {
+    0% {
+        transform: scale(0.7);
+        -webkit-transform: scale(0.7);
+    }
+    45% {
+        transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+    }
+    80% {
+        transform: scale(0.95);
+        -webkit-tranform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+}
 
 
 
