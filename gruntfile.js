@@ -36,7 +36,7 @@ module.exports = function(grunt) {
       dev: {
         options: {
           target: sourcePath + 'index.html',
-          relative_to: 'src'
+          relative_to: 'src/'
         },
         src: ['src/javascript/libs/jquery.min.js',
               'src/javascript/libs/angular.min.js',
@@ -132,7 +132,7 @@ module.exports = function(grunt) {
       }
     },
     uglify: {
-      prod: {
+      dist: {
         files: {
           'build/target/javascript/app.min.js': ['build/target/javascript/app.js']
         }
@@ -143,6 +143,18 @@ module.exports = function(grunt) {
         files: {
           'build/target/css/main.min.css': [sourcePath + 'css/main.css']
         }
+      }
+    },
+    replace: {
+      css_path: {
+        options: {
+          patterns: [
+            { match: /css\/main\.css/, replacement: 'css/main.min.css'}
+          ]
+        },
+        files: [
+          {expand: true, flatten: true, src: [targetPath + '/index.html'], dest: 'build/target/'}
+        ]
       }
     }
   });
@@ -158,6 +170,6 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['jshint', 'complexity', 'karma:unit']);
   grunt.registerTask('coverage', ['karma:unit', 'express', 'open:report', 'express-keepalive']);
   grunt.registerTask('install', ['copy:dev', 'clean:bower', 'html2js', 'json', 'jslinker:dev']);
-  grunt.registerTask('build', ['clean:target', 'copy:prod', 'clean:bower', 'html2js', 'json', 'ngAnnotate:staging', 'cssmin', 'clean:prod']);
+  grunt.registerTask('build', ['clean:target', 'copy:dist', 'clean:bower', 'html2js', 'json', 'ngAnnotate:dist', 'uglify:dist','cssmin', 'replace:css_path']);
 
 };
